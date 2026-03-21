@@ -1,0 +1,196 @@
+\documentclass[letterpaper,11pt]{article}
+
+% ---------------- Packages ----------------
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\input{glyphtounicode}
+
+% ---------------- Font ----------------
+\usepackage[sfdefault]{noto-sans}
+
+% ---------------- Page Style ----------------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---------------- Margins ----------------
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+
+\raggedbottom
+\setlength{\tabcolsep}{0in}
+\pdfgentounicode=1
+
+% ---------------- Compact Lists ----------------
+\setlist[itemize]{noitemsep, topsep=0pt, leftmargin=0.15in}
+
+% ---------------- Colors ----------------
+\definecolor{mygrey}{gray}{0.88}
+
+% ---------------- Custom Commands ----------------
+\newcommand{\resumeItem}[1]{\item\small{#1}}
+
+\newcommand{\resumeSubheading}[4]{
+\item
+\begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+\textbf{#1} & \textbf{#2} \\
+\small #3 & \\
+\end{tabular*}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+\item
+\begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+\small\textbf{#1} & \small #2 \\
+\end{tabular*}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+% ---------------- Compact Grey Section Bar ----------------
+\newcommand{\resheading}[1]{%
+\vspace{6pt}
+\noindent
+\colorbox{mygrey}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep}{%
+    \textbf{#1}
+  }%
+}
+\par\vspace{4pt}
+}
+
+% ================== DOCUMENT ==================
+\begin{document}
+
+% ---------------- Header ----------------
+\begin{center}
+{\Large \textbf{\href{https://portfolio-sandy-six-56.vercel.app/}{KHANPARA ANSH}}} \\
+\small Mobile: +91 8735959478 $|$
+\small E-mail: \href{mailto:anshkhanpara20@gmail.com}{anshkhanpara20@gmail.com} $|$
+\href{https://portfolio-sandy-six-56.vercel.app/}{Portfolio} $|$
+\href{https://www.linkedin.com/in/ansh-khanpara-97993b350/}{LinkedIn}
+\end{center}
+
+% ---------------- Education ----------------
+\resheading{Education}
+\begin{itemize}[leftmargin=0in,label={}]
+
+\resumeSubheading
+{B.Tech in Electronics and Communication Engineering $|$ Nirma University}
+{2023 -- 2027}
+{CGPA: 8.68}
+
+\resumeSubheading
+{Class XII $|$ GSEB Board}
+{2023}
+{Percentage: 76.46\% $|$ Shree K.G. Dholakiya School, Rajkot}
+
+\resumeSubheading
+{Class X $|$ GSEB Board}
+{2021}
+{Percentage: 79.16\% $|$ Shree K.G. Dholakiya School, Rajkot}
+
+\end{itemize}
+
+% ---------------- Profile ----------------
+\resheading{Profile}
+\begin{itemize}
+\item \small{\justifying
+Electronics and Communication Engineering undergraduate with experience in RTL design and backend VLSI concepts. Proficient in Verilog HDL and Cadence Virtuoso for digital and physical design workflows. Experienced in implementing digital systems through coursework and self-driven projects, with a focus on synthesizable Verilog, bus protocols, and timing-aware architectures.
+}
+\end{itemize}
+
+% ---------------- Projects ----------------
+\resheading{Projects}
+\begin{itemize}
+
+\resumeProjectHeading
+{32-Bit Pipelined RISC-V Processor with Hazard Control Unit $|$ \href{https://github.com/AnshKhanpara/RISC-V-PIPELINE}{[GitHub]}}
+{Dec 2025 -- Jan 2026}
+\begin{itemize}
+\resumeItem{Designed a synthesizable 32-bit RISC-V processor implementing a 5-stage pipeline (IF, ID, EX, MEM, WB).}
+\resumeItem{Implemented a dedicated hazard control unit to handle data hazards using forwarding and pipeline stalling.}
+\resumeItem{Integrated pipeline registers and control logic to maintain instruction execution integrity across stages.}
+\resumeItem{Verified RTL design through extensive simulation to ensure functional correctness.}
+\end{itemize}
+
+\resumeProjectHeading
+{AMBA APB Master–Slave Interface (APB4 Features) $|$ \href{https://github.com/AnshKhanpara/AMBA-APB}{[GitHub]}}
+{Dec 2025}
+\begin{itemize}
+\resumeItem{Designed a 32-bit AMBA APB Master–Slave interface with protocol-accurate FSM control.}
+\resumeItem{Implemented APB4 features including protection control (PPROT), byte-level strobes (PSTRB), and slave error signaling (PSLVERR).}
+\resumeItem{Integrated parity generation and checking mechanisms for enhanced data integrity.}
+\resumeItem{Developed address range validation and robust slave-side error reporting logic.}
+\end{itemize}
+
+\resumeProjectHeading
+{AXI4-Lite Design and Verification $|$ \href{https://github.com/AnshKhanpara/AMBA-AXI4-LITE}{[GitHub]}}
+{Feb 2025}
+\begin{itemize}
+\resumeItem{Designed AXI4-Lite compliant Master and Slave modules with independent read/write channel handling.}
+\resumeItem{Implemented VALID/READY handshaking protocols to ensure reliable data transfer.}
+\resumeItem{Developed a comprehensive SystemVerilog verification environment utilizing Interfaces, Drivers, Monitors, and Scoreboards.}
+\end{itemize}
+
+\resumeProjectHeading
+{2x2 SRAM Cell Array with Peripheral Circuitry $|$ \href{https://github.com/AnshKhanpara/SRAM-6T-Layout}{[GitHub]}}
+{Jan 2026}
+\begin{itemize}
+\resumeItem{Designed and implemented a 2x2 SRAM array using 6T bitcells with symmetry-aware placement.}
+\resumeItem{Developed essential peripheral circuitry: Write Circuit, Sense Amplifier, Precharge Circuit, and Row/Column Decoder.}
+\resumeItem{Implemented efficient Bitline (BL/BLB) and Wordline (WL) routing to minimize capacitive loading and improve access speed.}
+\resumeItem{Validated the physical design using Design Rule Check (DRC) and Layout Versus Schematic (LVS) verification.}
+\resumeItem{Performed pre-layout and post-layout simulations to verify circuit performance and bitcell stability.}
+\end{itemize}
+
+\resumeProjectHeading
+{4-Bit Synchronous Binary Counter $|$ Layout (Cadence Virtuoso)}
+{Jan 2026}
+\begin{itemize}
+\resumeItem{Designed a 4-bit synchronous binary up-counter using a custom Master-Slave JK Flip-Flop architecture.}
+\resumeItem{Developed a negative-edge triggered MS JK Flip-Flop IP block using CMOS NAND-gate logic.}
+\resumeItem{Validated functional correctness and timing through transient simulations and waveform analysis in Spectre.}
+\resumeItem{Ensured physical design integrity via Design Rule Check (DRC) and Layout Versus Schematic (LVS) verification.}
+\end{itemize}
+
+\end{itemize}
+
+% ---------------- Skills ----------------
+\resheading{Technical Skills}
+\begin{itemize}
+
+\item \small{\textbf{Languages}: Verilog, SystemVerilog, Embedded C, Python 3, MATLAB, Assembly (8051, MIPS).}
+
+\item \small{\textbf{Tools}: Vivado Design Suite 2023, Quartus II, ModelSim Altera, Cadence Virtuoso, MICROWIND.}
+
+\item \small{\textbf{Coursework}: Digital Electronics, Computer Architecture, Microcontrollers, VLSI Design, FPGA-Based Digital Design.}
+
+\item \small{\textbf{Protocols}: UART, AMBA APB, AMBA AXI.}
+
+\end{itemize}
+
+% ---------------- Certifications ----------------
+\resheading{Certifications}
+\begin{itemize}
+\item \small{
+Communication Series P2: AMBA APB in Verilog $|$ \href{https://drive.google.com/file/d/1oX3AQBMLTnz7NhxwLllbTi_hnUu9lKzz/view}{Namaste FPGA}
+}
+\end{itemize}
+
+\end{document}
