@@ -25,18 +25,28 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-secondary/50 transition-colors">
+              <a href="https://www.linkedin.com/in/ansh-khanpara-97993b350/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-secondary/50 transition-colors shrink-0">
                   <Linkedin className="w-5 h-5 text-secondary" />
                 </div>
                 <div>
                   <p className="text-xs text-muted uppercase tracking-widest mb-1">LinkedIn</p>
                   <p className="font-semibold">Ansh Khanpara</p>
                 </div>
-              </div>
+              </a>
+
+              <a href="https://github.com/AnshKhanpara" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary/50 transition-colors shrink-0">
+                  <Github className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted uppercase tracking-widest mb-1">GitHub</p>
+                  <p className="font-semibold">AnshKhanpara</p>
+                </div>
+              </a>
 
               <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-green-400/50 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-green-400/50 transition-colors shrink-0">
                   <MapPin className="w-5 h-5 text-green-400" />
                 </div>
                 <div>
