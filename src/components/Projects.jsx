@@ -84,7 +84,7 @@ const ProjectCard = ({ project }) => {
 
   return (
     <motion.div 
-      className="group relative bg-white/5 border border-white/10 rounded-2xl p-8 overflow-hidden hover:border-primary/20 transition-colors"
+      className="group relative bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 overflow-hidden hover:border-primary/20 transition-colors"
       whileHover={{ y: -5 }}
     >
       <div className="flex justify-between items-start mb-6">
@@ -92,7 +92,13 @@ const ProjectCard = ({ project }) => {
           {project.icon}
         </div>
         <div className="flex gap-3">
-          <a href={project.github} className="text-muted hover:text-white transition-colors">
+          <a 
+            href={project.github} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-muted hover:text-white transition-colors p-2 -m-2 rounded-full hover:bg-white/5"
+            aria-label={`View ${project.title} on GitHub`}
+          >
             <Github className="w-5 h-5" />
           </a>
         </div>
@@ -136,7 +142,7 @@ const ProjectCard = ({ project }) => {
         )}
       </AnimatePresence>
       
-      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
     </motion.div>
   );
 };
@@ -150,12 +156,12 @@ const Projects = () => {
   return (
     <section id="projects" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-          <div>
-            <h2 className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">Circuitry</h2>
-            <h3 className="text-5xl font-display font-bold">Selected Projects</h3>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6">
+          <div className="text-center md:text-left w-full md:w-auto">
+            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">Circuitry</h2>
+            <h3 className="text-4xl md:text-5xl font-display font-bold">Selected Projects</h3>
           </div>
-          <p className="text-muted text-sm max-w-xs text-right hidden md:block">
+          <p className="text-muted text-sm max-w-xs text-center md:text-right hidden sm:block">
             Hardware implementations focusing on performance, scalability, and technical integrity.
           </p>
         </div>

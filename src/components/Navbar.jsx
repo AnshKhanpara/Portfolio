@@ -24,26 +24,27 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'py-4' : 'py-8'}`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'py-4 bg-background/80 backdrop-blur-lg border-b border-white/5' : 'py-6 md:py-8'}`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <motion.div 
           className="flex items-center gap-2 cursor-pointer"
           whileHover={{ scale: 1.05 }}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/20">
-            <Cpu className="text-[#003840] w-6 h-6" />
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/20">
+            <Cpu className="text-[#003840] w-5 h-5 md:w-6 md:h-6" />
           </div>
-          <span className="font-display font-bold text-xl tracking-tighter">ANSH.</span>
+          <span className="font-display font-bold text-lg md:text-xl tracking-tighter uppercase mb-0.5">ANSH.</span>
         </motion.div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 glass px-8 py-3 rounded-full">
+        <div className="hidden md:flex items-center gap-8 glass px-8 py-3 rounded-full border border-white/10">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href}
-              className="text-xs font-bold uppercase tracking-widest text-muted hover:text-primary transition-colors"
+              className="text-[10px] font-bold uppercase tracking-widest text-muted hover:text-primary transition-colors"
             >
               {link.name}
             </a>
@@ -52,10 +53,11 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden p-2 text-white"
+          className="md:hidden p-2 text-white hover:bg-white/5 rounded-lg transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle Menu"
         >
-          {mobileMenuOpen ? <X /> : <Menu />}
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
@@ -63,22 +65,30 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-white/10 overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-2xl border-b border-white/10 overflow-hidden shadow-2xl"
           >
-            <div className="flex flex-col p-6 gap-6 items-center">
-              {navLinks.map((link) => (
-                <a 
+            <div className="flex flex-col p-8 gap-8 items-center">
+              {navLinks.map((link, idx) => (
+                <motion.a 
                   key={link.name} 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.05 }}
                   href={link.href}
-                  className="text-sm font-bold uppercase tracking-widest text-muted hover:text-primary transition-colors"
+                  className="text-lg font-bold uppercase tracking-[0.2em] text-muted hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
-                </a>
+                </motion.a>
               ))}
+              
+              <div className="w-full h-px bg-white/5 my-2"></div>
+              <p className="text-[10px] uppercase tracking-widest text-muted/40 font-display">
+                Silicon Valley • RTL Architect
+              </p>
             </div>
           </motion.div>
         )}

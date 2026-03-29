@@ -34,7 +34,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/20 transition-all group"
+              className="p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-secondary/20 transition-all group"
             >
               <h3 className="text-secondary font-display font-bold text-lg mb-6 group-hover:translate-x-1 transition-transform">{category.category}</h3>
               <ul className="space-y-3">

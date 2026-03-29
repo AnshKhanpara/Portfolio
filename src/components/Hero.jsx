@@ -15,37 +15,37 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-6">
+          <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] md:text-xs font-bold tracking-widest uppercase mb-6">
             RTL Design & VLSI Specialist
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold font-display leading-tight mb-6">
+          <h1 className="text-5xl md:text-8xl font-bold font-display leading-[1.1] mb-6">
             Ansh <br />
             <span className="gradient-text">Khanpara</span>
           </h1>
-          <p className="text-xl text-muted max-w-lg mb-10 leading-relaxed">
+          <p className="text-lg md:text-xl text-muted max-w-lg mb-10 leading-relaxed">
             I design and synthesize complex digital architectures, from high-performance RISC-V processors to robust bus protocols.
           </p>
           
-          <div className="flex flex-wrap gap-4">
-            <a href="#projects" className="btn-primary flex items-center gap-2 group">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a href="#projects" className="btn-primary flex items-center justify-center gap-2 group py-4 px-8">
               View Projects
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="/resume.pdf" download className="btn-secondary flex items-center gap-2">
+            <a href="/resume.pdf" download className="btn-secondary flex items-center justify-center gap-2 py-4 px-8">
               <Download className="w-4 h-4" />
               Download Resume
             </a>
           </div>
           
-          <div className="mt-12 flex gap-8 items-center border-t border-white/5 pt-8">
-            <div className="flex flex-col">
-              <span className="text-xs text-muted uppercase tracking-widest mb-1">Education</span>
+          <div className="mt-12 flex flex-row gap-6 md:gap-8 items-center border-t border-white/5 pt-8 overflow-x-auto no-scrollbar">
+            <div className="flex flex-col shrink-0">
+              <span className="text-[10px] text-muted uppercase tracking-widest mb-1">Education</span>
               <span className="text-sm font-semibold">Nirma University</span>
             </div>
-            <div className="h-8 w-px bg-white/10"></div>
-            <div className="flex flex-col">
-              <span className="text-xs text-muted uppercase tracking-widest mb-1">Expertise</span>
-              <span className="text-sm font-semibold">Verilog | Cadence</span>
+            <div className="h-8 w-px bg-white/10 shrink-0"></div>
+            <div className="flex flex-col shrink-0">
+              <span className="text-[10px] text-muted uppercase tracking-widest mb-1">Expertise</span>
+              <span className="text-sm font-semibold text-nowrap">Verilog | Cadence</span>
             </div>
           </div>
         </motion.div>

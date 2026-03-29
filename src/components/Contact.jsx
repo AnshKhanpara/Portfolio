@@ -7,10 +7,10 @@ const Contact = () => {
     <section id="contact" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div>
-            <h2 className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">Signal</h2>
-            <h3 className="text-5xl font-display font-bold mb-8">Get in Touch</h3>
-            <p className="text-muted text-lg mb-12 max-w-md leading-relaxed">
+          <div className="text-center lg:text-left">
+            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">Signal</h2>
+            <h3 className="text-4xl md:text-5xl font-display font-bold mb-8">Get in Touch</h3>
+            <p className="text-muted text-base md:text-lg mb-12 max-w-md mx-auto lg:mx-0 leading-relaxed">
               Interested in RTL design, VLSI collaboration, or just want to chat about hardware architectures? Drop a line.
             </p>
             
@@ -58,7 +58,7 @@ const Contact = () => {
           </div>
           
           <motion.div 
-            className="p-10 rounded-3xl glass relative overflow-hidden"
+            className="p-6 md:p-10 rounded-3xl glass relative overflow-hidden"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}

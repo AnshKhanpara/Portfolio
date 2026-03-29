@@ -74,20 +74,20 @@ const ThreeDTerminal = () => {
         </div>
 
         {/* Terminal Body */}
-        <div className="p-4 font-mono text-sm overflow-y-auto flex-1 custom-scrollbar">
+        <div className="p-3 md:p-4 font-mono text-[10px] md:text-sm overflow-y-auto flex-1 custom-scrollbar">
           <div className="flex gap-2 mb-2">
             <span className="text-purple-400">ansh@portfolio:~$</span>
             <span className="text-cyan-400">{typingText}</span>
             <motion.span 
               animate={{ opacity: [1, 0] }}
               transition={{ duration: 0.8, repeat: Infinity }}
-              className="w-2 h-4 bg-cyan-400"
+              className="w-1.5 h-3 md:w-2 md:h-4 bg-cyan-400"
             ></motion.span>
           </div>
           
           <div className="space-y-1">
             {outputLines.map((line, idx) => (
-              <div key={idx} className={`text-xs ${line.class || 'text-muted'}`}>
+              <div key={idx} className={`text-[9px] md:text-xs ${line.class || 'text-muted'}`}>
                 {line.text}
               </div>
             ))}

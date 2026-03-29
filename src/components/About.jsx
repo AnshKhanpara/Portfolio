@@ -11,16 +11,16 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="sticky top-32"
+              className="md:sticky md:top-32"
             >
               <h2 className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">Core Intent</h2>
-              <h3 className="text-4xl font-display font-bold leading-tight">
+              <h3 className="text-3xl md:text-4xl font-display font-bold leading-tight">
                 Architecting the <span className="text-secondary">Silicon</span> layer.
               </h3>
             </motion.div>
           </div>
           
-          <div className="col-span-2 space-y-8 text-lg text-muted leading-relaxed">
+          <div className="col-span-2 space-y-8 text-base md:text-lg text-muted leading-relaxed">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
