@@ -69,7 +69,6 @@ const ThreeDTerminal = () => {
             { text: "  skills   - Navigation: View technical matrix." },
             { text: "  projects - Navigation: Explore hardware designs." },
             { text: "  contact  - Navigation: Get in touch." },
-            { text: "  ls       - List available 'files'." },
             { text: "  clear    - Clear terminal history." },
             { text: "  whoami   - Display current user identity." }
           ];
@@ -90,9 +89,6 @@ const ThreeDTerminal = () => {
         case 'contact':
           scrollToSection('contact');
           response = [{ text: "Navigating to Contact section...", class: 'text-primary' }];
-          break;
-        case 'ls':
-          response = [{ text: "resume.pdf  verilog_master_prompt.md  architect_v1.bin", class: 'text-cyan-400' }];
           break;
         case 'clear':
           setOutputLines([]);
