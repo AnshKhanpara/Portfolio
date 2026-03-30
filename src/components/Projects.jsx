@@ -76,19 +76,6 @@ const projects = [
       "Developed peripheral circuitry: Write Circuit, Sense Amplifier, Precharge, and Decoders.",
       "Validated via DRC and LVS; performed post-layout simulations in Cadence Virtuoso."
     ]
-  },
-  {
-    title: "AES-128 Cryptographic Engine",
-    category: "Security Architectures",
-    tech: ["Verilog", "RTL", "Cryptography"],
-    icon: <Database className="w-5 h-5 text-red-400" />,
-    github: "https://github.com/AnshKhanpara/AES-128-RTL",
-    details: [
-      "Designed a synthesizable 128-bit AES engine using an iterative architecture to optimize for power and area.",
-      "Implemented full NIST FIPS 197 suite: Key Expansion, SubBytes, ShiftRows, and MixColumns.",
-      "Achieved 400 MHz clock frequency on FPGA targets, verified against standard NIST test vectors.",
-      "Supported both encryption and decryption paths with area-optimized round module reuse."
-    ]
   }
 ];
 
