@@ -159,9 +159,7 @@ const Modal = ({ isOpen, onClose, project }) => {
   );
 };
 
-const ProjectCard = ({ project }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+const ProjectCard = ({ project, onViewDetails }) => {
   return (
     <motion.div 
       className="group relative bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 overflow-hidden hover:border-primary/20 transition-colors"
@@ -198,18 +196,12 @@ const ProjectCard = ({ project }) => {
       </div>
 
       <button 
-        onClick={() => setIsModalOpen(true)}
+        onClick={onViewDetails}
         className="text-sm text-cyan-400 font-bold flex items-center gap-1 group/btn"
       >
         Detailed View
         <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
       </button>
-
-      <Modal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        project={project} 
-      />
       
       <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
     </motion.div>
@@ -218,6 +210,8 @@ const ProjectCard = ({ project }) => {
 
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   return (
     <section id="projects" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
@@ -233,10 +227,20 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((p, i) => (
-            <ProjectCard key={i} project={p} />
+            <ProjectCard 
+              key={i} 
+              project={p} 
+              onViewDetails={() => setSelectedProject(p)} 
+            />
           ))}
         </div>
       </div>
+
+      <Modal 
+        isOpen={!!selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+        project={selectedProject} 
+      />
     </section>
   );
 };
