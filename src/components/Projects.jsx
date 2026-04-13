@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, Cpu, Database, Network, Box } from 'lucide-react';
+import { Github, ExternalLink, Cpu, Database, Network, Box, X, ChevronRight } from 'lucide-react';
 
 const projects = [
   {
@@ -66,21 +66,101 @@ const projects = [
     ]
   },
   {
-    title: "2x2 SRAM Cell Array",
+    title: "4x4 SRAM Cell Array",
     category: "VLSI Layout",
     tech: ["Cadence Virtuoso", "6T Bitcell", "LVS/DRC"],
     icon: <Database className="w-5 h-5 text-green-400" />,
-    github: "https://github.com/AnshKhanpara/SRAM-Layout",
+    github: null,
     details: [
-      "Designed and implemented a 2x2 SRAM array using 6T bitcells with symmetry-aware placement.",
+      "Designed and implemented a 4x4 SRAM array using 6T bitcells with symmetry-aware placement.",
       "Developed peripheral circuitry: Write Circuit, Sense Amplifier, Precharge, and Decoders.",
       "Validated via DRC and LVS; performed post-layout simulations in Cadence Virtuoso."
     ]
   }
 ];
 
+const Modal = ({ isOpen, onClose, project }) => {
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-background/80 backdrop-blur-md"
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0, y: 20 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.9, opacity: 0, y: 20 }}
+          className="relative w-full max-w-2xl bg-surface border border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden shadow-2xl"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button 
+            onClick={onClose}
+            className="absolute top-6 right-6 p-2 text-muted hover:text-white hover:bg-white/5 rounded-full transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          <div className="flex items-center gap-4 mb-8">
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/5">
+              {project.icon}
+            </div>
+            <div>
+              <p className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-1">{project.category}</p>
+              <h3 className="text-3xl font-display font-bold text-white">{project.title}</h3>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map(t => (
+                <span key={t} className="text-[10px] px-2 py-1 rounded bg-white/5 text-muted border border-white/10 uppercase tracking-wider">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div className="h-px bg-white/5 w-full"></div>
+
+            <ul className="space-y-4">
+              {project.details.map((detail, i) => (
+                <li key={i} className="flex gap-3 text-muted leading-relaxed">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2.5"></span>
+                  <span className="text-base">{detail}</span>
+                </li>
+              ))}
+            </ul>
+
+            {project.github && (
+              <div className="pt-6">
+                <a 
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-sm font-bold text-white transition-all group"
+                >
+                  <Github className="w-4 h-4" />
+                  View Repository
+                  <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
+                </a>
+              </div>
+            )}
+          </div>
+
+          {/* Decorative background element */}
+          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
 const ProjectCard = ({ project }) => {
-  const [showDetails, setShowDetails] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <motion.div 
@@ -92,15 +172,17 @@ const ProjectCard = ({ project }) => {
           {project.icon}
         </div>
         <div className="flex gap-3">
-          <a 
-            href={project.github} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="text-muted hover:text-white transition-colors p-2 -m-2 rounded-full hover:bg-white/5"
-            aria-label={`View ${project.title} on GitHub`}
-          >
-            <Github className="w-5 h-5" />
-          </a>
+          {project.github && (
+            <a 
+              href={project.github} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-muted hover:text-white transition-colors p-2 -m-2 rounded-full hover:bg-white/5"
+              aria-label={`View ${project.title} on GitHub`}
+            >
+              <Github className="w-5 h-5" />
+            </a>
+          )}
         </div>
       </div>
       
@@ -116,41 +198,24 @@ const ProjectCard = ({ project }) => {
       </div>
 
       <button 
-        onClick={() => setShowDetails(!showDetails)}
+        onClick={() => setIsModalOpen(true)}
         className="text-sm text-cyan-400 font-bold flex items-center gap-1 group/btn"
       >
-        {showDetails ? 'Hide Details' : 'Detailed View'}
-        <ChevronRight className={`w-4 h-4 transition-transform ${showDetails ? 'rotate-90' : 'group-hover:translate-x-1'}`} />
+        Detailed View
+        <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
       </button>
 
-      <AnimatePresence>
-        {showDetails && (
-          <motion.div 
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden"
-          >
-            <ul className="mt-6 space-y-3">
-              {project.details.map((detail, i) => (
-                <li key={i} className="text-sm text-muted list-disc ml-4 leading-relaxed">
-                  {detail}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        project={project} 
+      />
       
       <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
     </motion.div>
   );
 };
 
-// Internal Import for Chevron
-const ChevronRight = ({ className }) => (
-  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-);
 
 const Projects = () => {
   return (
